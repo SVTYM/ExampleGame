@@ -7,3 +7,22 @@ git remote add origin https://github.com/SVTYM/ExampleGame.git
 git push -u origin main
 git config --global --add safe.directory "C:/Users/Victor Adonahí/OneDrive/Documentos/proyecto-1"
 git add .
+git commit -m "first commit"
+git branch -M main
+git push -u origin main
+git config --global user.email "SVTYM"
+git config --global user.name "SVTYM"
+git config --global user.email "elsupertrol121@gmail.com"
+git commit -m "first commit"
+git branch -M main
+git push -u origin main
+git push origin main
+git push
+echo "# ExampleGame" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/SVTYM/ExampleGame.git
+git push -u origin main
+git add .
