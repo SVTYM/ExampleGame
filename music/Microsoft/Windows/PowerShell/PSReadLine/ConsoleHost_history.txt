@@ -1,0 +1,1 @@
+ffmpeg -i playerhit.mp3 -q:a 4 playerhit.ogg

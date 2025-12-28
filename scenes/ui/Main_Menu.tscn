@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://cur10xn22v1sx"]
+
+[ext_resource type="Script" uid="uid://dt34l0m7qlnv0" path="res://scripts/main_menu.gd" id="1_abljk"]
+
+[sub_resource type="SystemFont" id="SystemFont_abljk"]
+font_names = PackedStringArray("CaskaydiaCove Nerd Font")
+
+[sub_resource type="LabelSettings" id="LabelSettings_f5paj"]
+font = SubResource("SystemFont_abljk")
+font_size = 40
+
+[sub_resource type="Gradient" id="Gradient_abljk"]
+colors = PackedColorArray(0.05882353, 0.09019608, 0.16470589, 1, 0.007843138, 0.023529412, 0.09019608, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f5paj"]
+gradient = SubResource("Gradient_abljk")
+use_hdr = true
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_abljk")
+first_level_path = "res://scenes/levels/level_01.tscn"
+
+[node name="Panel" type="Panel" parent="."]
+z_index = 1
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 650.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+z_index = 1
+layout_mode = 0
+offset_left = 336.0
+offset_top = 127.0
+offset_right = 836.0
+offset_bottom = 477.0
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.58
+text = "ExampleGame"
+label_settings = SubResource("LabelSettings_f5paj")
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="Panel/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+text = "Jugar"
+
+[node name="Settings" type="Button" parent="Panel/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+text = "Ajustes"
+
+[node name="Exit" type="Button" parent="Panel/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+text = "Salir"
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 650.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_f5paj")
+
+[connection signal="pressed" from="Panel/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Settings" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

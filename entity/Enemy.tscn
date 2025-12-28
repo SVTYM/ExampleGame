@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddi6a3iwnubh7"]
+
+[ext_resource type="PackedScene" uid="uid://dosmssl684l16" path="res://entity/BaseEntity.tscn" id="1_u7s3j"]
+[ext_resource type="Script" uid="uid://bwy6alp2ncu75" path="res://scripts/enemy.gd" id="2_7f0ms"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u7s3j"]
+radius = 116.841774
+
+[node name="Enemy" instance=ExtResource("1_u7s3j")]
+script = ExtResource("2_7f0ms")
+MOVE_SPEED = 80.0
+TURN_COOLDOWN = 0.2
+
+[node name="DetectionArea" type="Area2D" parent="." index="2"]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" index="0"]
+shape = SubResource("CircleShape2D_u7s3j")
+
+[node name="LedgeRay" type="RayCast2D" parent="." index="3"]
+target_position = Vector2(8, 24)
+collision_mask = 6

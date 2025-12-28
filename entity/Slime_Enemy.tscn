@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxa0wsamwv3q1"]
+
+[ext_resource type="PackedScene" uid="uid://ddi6a3iwnubh7" path="res://entity/Enemy.tscn" id="1_76btl"]
+[ext_resource type="SpriteFrames" uid="uid://cw51oct72c64m" path="res://tres/Slime.tres" id="2_8lx73"]
+[ext_resource type="Script" uid="uid://8e6lh2simj7k" path="res://scripts/slime_enemy.gd" id="2_rqey2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lx73"]
+size = Vector2(12, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76btl"]
+size = Vector2(16, 18)
+
+[node name="SlimeEnemy" instance=ExtResource("1_76btl")]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("2_rqey2")
+ATTACK_DAMAGE = 10
+ATTACK_COOLDOWN = 0.4
+HIT_START_TIME = 0.12
+HIT_DURATION = 0.08
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_8lx73")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+texture_filter = 1
+position = Vector2(0, -6)
+sprite_frames = ExtResource("2_8lx73")
+animation = &"Attack"
+
+[node name="AttackArea" type="Area2D" parent="." index="2"]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
+shape = SubResource("RectangleShape2D_76btl")
