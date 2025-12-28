@@ -26,3 +26,6 @@ git branch -M main
 git remote add origin https://github.com/SVTYM/ExampleGame.git
 git push -u origin main
 git add .
+git commit -m "update: readme Upgrade\"
+git push
+git add .

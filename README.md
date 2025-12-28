@@ -119,7 +119,7 @@ Este proyecto se distribuye bajo la licencia MIT. Eres libre de usarlo, modifica
 
 ## Autor
 
-Desarrollado por Victor Adonahí.  
+Desarrollado por Victor Adonahí Fuentes Vallejo.  
 GitHub: https://github.com/SVTYM
 
 "Código limpio, mecánicas claras y bases sólidas hacen un buen juego."
