@@ -47,32 +47,25 @@ func on_damage_received(source: BaseEntity) -> void:
 
 	invulnerable = true
 	is_knockback = true
-
-	play_anim("Hit")
+	
 	hit_sfx.stream = preload("res://music/playerhit.ogg")
 	hit_sfx.volume_db = -8
+	play_anim("Hit")
 	hit_sfx.play()
-	var dir: int = sign(global_position.x - source.global_position.x)
+
+	var dir: float = sign(global_position.x - source.global_position.x)
 	if dir == 0:
 		dir = -1 if sprite.flip_h else 1
 
-	# 🔥 EMPUJE REAL
 	velocity.x = dir * KNOCKBACK_FORCE
 	velocity.y = JUMP_VELOCITY * 0.6
 
-	print("💥 PLAYER HIT BY:", source.name)
-	print("  knockback dir:", dir)
-	print("  velocity:", velocity)
-
 	await get_tree().create_timer(KNOCKBACK_TIME).timeout
 	is_knockback = false
-	velocity.x = 0
-	print("🟡 knockback OFF")
+	velocity = Vector2.ZERO
 
 	await get_tree().create_timer(INVULNERABLE_TIME).timeout
 	invulnerable = false
-	print("🟢 invulnerable OFF")
-
 
 # ======================
 # ROLL

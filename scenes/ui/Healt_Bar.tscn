@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://di8gmgyb5k21o"]
+
+[ext_resource type="Script" uid="uid://cx03eopx1ad3w" path="res://scripts/health_bar.gd" id="1_vutvv"]
+
+[sub_resource type="Gradient" id="Gradient_vutvv"]
+colors = PackedColorArray(0.13682577, 0.13682574, 0.13682571, 1, 0.28485027, 0.28485027, 0.28485027, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h2ybf"]
+gradient = SubResource("Gradient_vutvv")
+
+[sub_resource type="Gradient" id="Gradient_h2ybf"]
+colors = PackedColorArray(1, 0, 0, 1, 0.57925385, 1.973361e-06, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nd021"]
+gradient = SubResource("Gradient_h2ybf")
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vutvv")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+custom_minimum_size = Vector2(220, 18)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.22600001
+anchor_bottom = 0.021000002
+offset_right = -0.35202026
+offset_bottom = 50.392
+rounded = true
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_h2ybf")
+texture_progress = SubResource("GradientTexture2D_nd021")

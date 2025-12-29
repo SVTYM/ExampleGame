@@ -29,3 +29,6 @@ git add .
 git commit -m "update: readme Upgrade\"
 git push
 git add .
+git commit -m "update: readme change, autor name"
+git push
+git add .

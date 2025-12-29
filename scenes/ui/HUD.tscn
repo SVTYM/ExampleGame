@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw72qm2jddme2"]
+
+[ext_resource type="Script" uid="uid://cxbrgqxmj7t5e" path="res://scripts/hud.gd" id="1_kw0id"]
+[ext_resource type="PackedScene" uid="uid://di8gmgyb5k21o" path="res://scenes/ui/Healt_Bar.tscn" id="2_atyv1"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_kw0id")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_atyv1")]
+offset_left = -28.0
+offset_right = -28.0

@@ -2,8 +2,10 @@ extends Node2D
 
 @onready var bounds: CollisionShape2D = $CameraBounds/CollisionShape2D
 @onready var music: AudioStreamPlayer = $BackgroundMusic
+@onready var hud: CanvasLayer = $HUD
 
 var cam: Camera2D
+var player: BaseEntity
 
 
 func _ready() -> void:
@@ -30,7 +32,33 @@ func _ready() -> void:
 
 	apply_camera_limits()
 
+	# ─────────────────────────
+	# ❤️ HUD + PLAYER
+	# ─────────────────────────
+	find_and_bind_player()
 
+
+func find_and_bind_player() -> void:
+	var players := get_tree().get_nodes_in_group("player")
+	if players.is_empty():
+		push_warning("⚠️ No player found in group 'player'")
+		return
+
+	player = players[0] as BaseEntity
+	if player == null:
+		push_warning("⚠️ Node in group 'player' is not BaseEntity")
+		return
+
+	# 🔗 Enlace limpio
+	if hud.has_method("bind_player"):
+		hud.bind_player(player)
+	else:
+		push_warning("⚠️ HUD has no method bind_player()")
+
+
+# ─────────────────────────
+# 📷 CAMERA LIMITS
+# ─────────────────────────
 func apply_camera_limits() -> void:
 	var shape := bounds.shape as RectangleShape2D
 	if shape == null:

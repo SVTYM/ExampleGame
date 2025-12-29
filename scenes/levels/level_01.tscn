@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://behih2lrhyw66"]
+[gd_scene load_steps=13 format=4 uid="uid://behih2lrhyw66"]
 
 [ext_resource type="Script" uid="uid://but3ftaeog4g7" path="res://scripts/node.gd" id="1_1ey3t"]
 [ext_resource type="PackedScene" uid="uid://dt18af4aywj42" path="res://entity/Player.tscn" id="2_t0hvh"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dea2wm048jy7o" path="res://scenes/utils/camera_bounds.tscn" id="5_ijn0p"]
 [ext_resource type="PackedScene" uid="uid://cb4snrfxjvs5b" path="res://scenes/utils/death_zone.tscn" id="6_jmes4"]
 [ext_resource type="PackedScene" uid="uid://dxa0wsamwv3q1" path="res://entity/Slime_Enemy.tscn" id="7_tyxjt"]
+[ext_resource type="PackedScene" uid="uid://dw72qm2jddme2" path="res://scenes/ui/HUD.tscn" id="8_t0hvh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qn3nj"]
 texture = ExtResource("3_kfebt")
@@ -401,3 +402,5 @@ position = Vector2(216, 612)
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 volume_db = -21.0
+
+[node name="HUD" parent="." instance=ExtResource("8_t0hvh")]

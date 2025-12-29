@@ -2,6 +2,12 @@ extends CharacterBody2D
 class_name BaseEntity
 
 # ======================
+# SIGNALS (UI / SISTEMAS)
+# ======================
+signal life_changed(current: int, max: int)
+signal died
+
+# ======================
 # CONFIG
 # ======================
 @export var SPEED: float = 300.0
@@ -20,6 +26,7 @@ var is_dead: bool = false
 # ======================
 func _ready() -> void:
 	life = MAX_LIFE
+	emit_signal("life_changed", life, MAX_LIFE)
 
 
 # ======================
@@ -49,10 +56,8 @@ func on_take_damage(damage: int, source: BaseEntity) -> void:
 	# 🔒 validaciones duras
 	if damage <= 0:
 		return
-
 	if is_dead:
 		return
-
 	if life <= 0:
 		return
 
@@ -61,6 +66,9 @@ func on_take_damage(damage: int, source: BaseEntity) -> void:
 	life = max(life, 0)
 
 	print("❤️ LIFE:", life)
+
+	# 🔔 notificar cambio de vida (UI / HUD / BossBar)
+	emit_signal("life_changed", life, MAX_LIFE)
 
 	# muerte tiene prioridad absoluta
 	if life == 0:
@@ -81,8 +89,11 @@ func die() -> void:
 		return
 
 	is_dead = true
+	velocity = Vector2.ZERO
+
 	print("☠️", name, "DIED")
 
+	emit_signal("died")
 	queue_free()
 
 
